@@ -1,6 +1,9 @@
 ### CMake ###
 cmake_minimum_required(VERSION 3.15...3.30)
 
+### Compile commands generation ###
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 ### Compiler settings ###
 set(CMAKE_C_COMPILER clang)
 set(CMAKE_CXX_COMPILER clang++) 
@@ -21,7 +24,7 @@ project(
 ### Source path ###
 set(SOURCES
   src/main.cpp
-  src/header.cpp
+  src/algo.cpp
 )
 
 ### Executable statament ###
@@ -48,16 +51,15 @@ FetchContent_MakeAvailable(googletest)
 enable_testing()
 
 add_executable(
-  hello_test
-  src/hello_test.cpp
+  algo_test
+  src/algo_test.cpp
+  src/algo.cpp
 )
 target_link_libraries(
-  hello_test
+  algo_test
   GTest::gtest_main
 )
+target_include_directories(algo_test PRIVATE ${PROJECT_SOURCE_DIR}/include)
 
 include(GoogleTest)
-gtest_discover_tests(hello_test)
-
-### Compile commands generation ###
-set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
+gtest_discover_tests(algo_test)

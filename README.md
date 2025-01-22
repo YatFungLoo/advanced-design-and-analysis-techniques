@@ -22,22 +22,27 @@ Steps to develop a dynamic programming algorithms:
 Optimal substructure problem: optimal solution are composed of optimal sub-solution, basically meaning it can be solved recursively.
 
 # To run the code
-```
-mkdir build && cd build
-```
 
 ```
-cmake .. --preset=debug
+cmake -S . --preset=debug -B build
 ```
 
-or 
+or
 
 ```
-cmake .. --preset=release
+cmake -S . --preset=release -B build
 ```
 
+then run
+
 ```
-ninja clean && ninja
+cmake --build build
+```
+
+or
+
+```
+cd build && ninja clean && ninja
 ```
 
 and executable will exist in the `build/` directory.

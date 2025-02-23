@@ -35,3 +35,5 @@
 .cache/
 build/
 *compile_commands.json
+book
+.vscode

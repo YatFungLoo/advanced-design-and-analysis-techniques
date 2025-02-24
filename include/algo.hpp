@@ -16,6 +16,7 @@ class Algo {
     [[maybe_unused]] static int fibonacci(int number);
     [[maybe_unused]] static int fibonacciBottomUp(int number);
     [[maybe_unused]] static int cutRod(int length, std::array<Rod, NUM_LENGTH> const &data);
+    [[maybe_unused]] static int cutRodDynamic(int length, std::array<Rod, NUM_LENGTH> const &data);
 };
 
 #endif

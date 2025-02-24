@@ -4,7 +4,10 @@ Note and codes while studying the book Advanced Design And Analysis Techniques, 
 
 - [Advanced Design And Analysis Techniques](#advanced-design-and-analysis-techniques)
   - [Dynamic Programming](#dynamic-programming)
+  - [Fibonacci Number](#fibonacci-number)
   - [Rod Cutting Problem](#rod-cutting-problem)
+    - [Top Down Recursive Approach (Naive Solution)](#top-down-recursive-approach-naive-solution)
+    - [Dynamic Programming Approach](#dynamic-programming-approach)
   - [To run the code](#to-run-the-code)
 
 ## Dynamic Programming
@@ -16,9 +19,25 @@ Steps to develop a dynamic programming algorithms:
 3. Compute the value for an optimal solution, usually bottom-up approach.
 4. Construct an optimal solution from computed information.
 
+## Fibonacci Number
+
+Including Top down (recursion using call stack) and bottom up (iterative, using array or min variables) method as it is the simplest showcase of recursion for myself to refresh these content.
+
 ## Rod Cutting Problem
 
 Optimal substructure problem: optimal solution are composed of optimal sub-solution, basically meaning it can be solved recursively.
+
+The recursive structure for the problem can be decomposed of first piece to be the left-hand end, and right-hand end to be the maximum/optimal price of the total length.
+
+### Top Down Recursive Approach (Naive Solution)
+
+If you implement the above method, you will find the function get considerably slower exponentially. This problem exist with top down recursive approach, because we are recalculating each sub-problem again every time for each level it goes up.
+
+As a tree with each node equals to a function call, for a rob length of $n$ having $n-1$ potential locations to cut, there will be $2^{n-1}$ number of nodes.
+
+### Dynamic Programming Approach
+
+
 
 ## To run the code
 

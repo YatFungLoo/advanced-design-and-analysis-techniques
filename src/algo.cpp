@@ -47,23 +47,25 @@
     for (auto &i : ret) {
         i = 0;
     }
-    return Algo::cutRodMemorizedAux(length, data, ret);
+    ret = Algo::cutRodMemorizedAux(length, data, ret);
+    return ret[length];
 }
 
-[[maybe_unused]] int Algo::cutRodMemorizedAux(const int length, std::array<Rod, NUM_LENGTH> const &data,
-                                              std::array<int, NUM_LENGTH> &ret) {
+[[maybe_unused]] std::array<int, NUM_LENGTH>
+Algo::cutRodMemorizedAux(const int length, std::array<Rod, NUM_LENGTH> const &data, std::array<int, NUM_LENGTH> &ret) {
     if (length == 0) {
-        return 0;
+        ret[length] = 0;
+        return ret;
     }
-    if (ret[length] != 0) {
-        return ret[length];
+    if (ret[length] > 0) {
+        return ret;
     }
 
     int price = 0;
     for (int i = 1; i <= length; i++) {
-        price = std::max(price, (data[i].price + cutRodMemorizedAux(length - i, data, ret)));
+        ret = cutRodMemorizedAux(length - i, data, ret);
+        price = std::max(price, (data[i].price + ret[length - i]));
     }
-
-    ret[length] = price; // Memorise before returning functions
-    return price;
+    ret[length] = price;
+    return ret;
 }

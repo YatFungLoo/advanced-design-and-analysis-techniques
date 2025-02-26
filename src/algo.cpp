@@ -1,9 +1,7 @@
 #include "algo.hpp"
 
-void Example::Print() { std::cout << "Hello World." << std::endl; }
-
 // @brief Recursive top-down implementation. return number'th element of fibonacci sequence.
-[[maybe_unused]] int Algo::fibonacci(int number) {
+[[maybe_unused]] int Algo::fibonacci(const int number) {
     if (number == 0)
         return 0;
 
@@ -19,8 +17,8 @@ void Example::Print() { std::cout << "Hello World." << std::endl; }
 }
 
 // @brief Iterative bottom-up implementation. return number'th element of fibonacci sequence.
-[[maybe_unused]] int Algo::fibonacciBottomUp(int number) {
-    std::vector<int> fib = {0, 1};  // includes base case within vector definition.
+[[maybe_unused]] int Algo::fibonacciBottomUp(const int number) {
+    std::vector<int> fib = {0, 1}; // includes base case within vector definition.
 
     for (int i = 2; i <= number; i++) {
         fib[i] = fib[i - 2] + fib[i - 1];
@@ -30,7 +28,7 @@ void Example::Print() { std::cout << "Hello World." << std::endl; }
 }
 
 // @brief Recursive top-down implementation, return maximum price of rod input length.
-[[maybe_unused]] int Algo::cutRod(int length, std::array<Rod, NUM_LENGTH> const &data) {
+[[maybe_unused]] int Algo::cutRod(const int length, std::array<Rod, NUM_LENGTH> const &data) {
     if (length == 0) {
         return 0;
     }
@@ -43,16 +41,29 @@ void Example::Print() { std::cout << "Hello World." << std::endl; }
     return price;
 }
 
-// @brief Recursive top-down implementation, return maximum price of rod input length.
-[[maybe_unused]] int Algo::cutRodDynamic(int length, std::array<Rod, NUM_LENGTH> const &data) {
+// @brief Recursive top-down memorized implementation, return maximum price of rod input length.
+[[maybe_unused]] int Algo::cutRodMemorized(const int length, std::array<Rod, NUM_LENGTH> const &data) {
+    std::array<int, NUM_LENGTH> ret;
+    for (auto &i : ret) {
+        i = 0;
+    }
+    return Algo::cutRodMemorizedAux(length, data, ret);
+}
+
+[[maybe_unused]] int Algo::cutRodMemorizedAux(const int length, std::array<Rod, NUM_LENGTH> const &data,
+                                              std::array<int, NUM_LENGTH> &ret) {
     if (length == 0) {
         return 0;
+    }
+    if (ret[length] != 0) {
+        return ret[length];
     }
 
     int price = 0;
     for (int i = 1; i <= length; i++) {
-        price = std::max(price, (data[i].price + cutRod(length - i, data)));
+        price = std::max(price, (data[i].price + cutRodMemorizedAux(length - i, data, ret)));
     }
 
+    ret[length] = price; // Memorise before returning functions
     return price;
 }

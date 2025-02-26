@@ -3,20 +3,17 @@
 
 #include <algorithm>
 #include <array>
+#include <vector>
 #include <data.hpp>
-#include <iostream>
-
-class Example {
-  public:
-    void Print();
-};
 
 class Algo {
   public:
-    [[maybe_unused]] static int fibonacci(int number);
-    [[maybe_unused]] static int fibonacciBottomUp(int number);
-    [[maybe_unused]] static int cutRod(int length, std::array<Rod, NUM_LENGTH> const &data);
-    [[maybe_unused]] static int cutRodDynamic(int length, std::array<Rod, NUM_LENGTH> const &data);
+    [[maybe_unused]] static int fibonacci(const int number);
+    [[maybe_unused]] static int fibonacciBottomUp(const int number);
+    [[maybe_unused]] static int cutRod(const int length, std::array<Rod, NUM_LENGTH> const &data);
+    [[maybe_unused]] static int cutRodMemorized(const int length, std::array<Rod, NUM_LENGTH> const &data);
+    [[maybe_unused]] static int cutRodMemorizedAux(const int length, std::array<Rod, NUM_LENGTH> const &data,
+                                                   std::array<int, NUM_LENGTH> &ret);
 };
 
 #endif

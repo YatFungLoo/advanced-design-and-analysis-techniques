@@ -13,7 +13,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 ### default C++ compile flag ###
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DEX2" CACHE STRING "Set C++ Compiler Flags" FORCE)
 
-### Project statament ###
+### Project statement ###
 project(
   Example
   VERSION 1.0
@@ -27,7 +27,7 @@ set(SOURCES
   src/algo.cpp
 )
 
-### Executable statament ###
+### Executable statement ###
 add_executable(${PROJECT_NAME} ${SOURCES})
 
 ### Include path ###

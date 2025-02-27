@@ -1,17 +1,24 @@
 # Advanced Design And Analysis Techniques
 
-Note and codes while studying the book Advanced Design And Analysis Techniques, 4th edition. Mainly chapter １4, on dynamic programming and greedy algorithms (aka LeetCode hard).
+Note and codes while studying the book Advanced Design And Analysis Techniques, 4th edition. Mainly chapter １4, on dynamic programming and greedy algorithms (Ada LeetCode hard).
+
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
 
 - [Advanced Design And Analysis Techniques](#advanced-design-and-analysis-techniques)
   - [Dynamic Programming](#dynamic-programming)
     - [Fibonacci Number](#fibonacci-number)
     - [Rod Cutting Problem](#rod-cutting-problem)
       - [Top Down Recursive Approach (Naive Solution)](#top-down-recursive-approach-naive-solution)
-      - [Dynamic Programming Approach (Top Down w/ *memoization*)](#dynamic-programming-approach-top-down-w-memoization)
+      - [Dynamic Programming Approach (Top Down w/ *memorization*)](#dynamic-programming-approach-top-down-w-memorization)
+      - [Dynamic Bottom Up Approach (Iterative)](#dynamic-bottom-up-approach-iterative)
+    - [Matrix-Chain Multiplication](#matrix-chain-multiplication)
   - [Greedy Algorithms](#greedy-algorithms)
   - [Amortized Analysis](#amortized-analysis)
   - [Graph related (Move to a new Repo)](#graph-related-move-to-a-new-repo)
   - [To run the code](#to-run-the-code)
+
+<!-- markdown-toc end -->
 
 ## Dynamic Programming
 
@@ -38,13 +45,17 @@ If you implement the above method, you will find the function get considerably s
 
 As a tree with each node equals to a function call, for a rob length of $n$ having $n-1$ potential locations to cut, there will be $2^{n-1}$ number of nodes.
 
-#### Dynamic Programming Approach (Top Down w/ *memoization*)
+#### Dynamic Programming Approach (Top Down w/ *memorization*)
 
 Dynamic programming approach to solve the problem of recalculating sub-problem, is to instead save the solution of the sub-problem and reuse as needed!
 
 > This is a classic case of time-memory trade-off (like hashing). Where time is saved using more memory (for saving sub-problem results.)
 
 The implementation here uses a an extra array size of maximum length of rod, which passes around by reference.
+
+#### Dynamic Bottom Up Approach (Iterative)
+
+Same approach but different execution to above Fibonacci bottom up method. Solve and save sub-problem results in `ascending` order (smallest first), and reuse results.
 
 ## Greedy Algorithms
 
@@ -68,7 +79,7 @@ or
 ```bash
 cmake -S . --preset=release -B build
 ```
-		
+
 then run
 
 ```bash

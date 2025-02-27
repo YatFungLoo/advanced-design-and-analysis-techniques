@@ -14,6 +14,7 @@ class Algo {
     [[maybe_unused]] static int cutRodMemorized(const int length, std::array<Rod, NUM_LENGTH> const &data);
     [[maybe_unused]] static std::array<int, NUM_LENGTH>
     cutRodMemorizedAux(const int length, std::array<Rod, NUM_LENGTH> const &data, std::array<int, NUM_LENGTH> &ret);
+    [[maybe_unused]] static int cutRodBottomUp(const int length, std::array<Rod, NUM_LENGTH> const &data);
 };
 
 #endif

@@ -69,3 +69,19 @@ Algo::cutRodMemorizedAux(const int length, std::array<Rod, NUM_LENGTH> const &da
     ret[length] = price;
     return ret;
 }
+
+int Algo::cutRodBottomUp(const int length, std::array<Rod, NUM_LENGTH> const &data) {
+    std::array<int, NUM_LENGTH> ret; // Storing results.
+    for (auto &i : ret) {
+        i = 0;
+    }
+
+    int price = 0;
+    for (int j = 1; j <= NUM_LENGTH; j++) {
+        for (int i = 1; i <= j; i++) {
+            price = std::max(price, data[i].price + ret[j - i]);
+        }
+        ret[j] = price;
+    }
+    return ret[length];
+}

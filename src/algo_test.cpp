@@ -15,6 +15,12 @@ TEST(cutRodDynamicTest, HandlesPositiveInput) {
     }
 };
 
+TEST(cutRodDynamicBottomUpTest, HandlesPositiveInput) {
+    for (int i = 0; i < NUM_LENGTH; i++) {
+        EXPECT_EQ(Algo::cutRodBottomUp(i, TestData::data), TestData::ans[i]) << "i is : " << i << std::endl;
+    }
+}
+
 // fib tests
 TEST(fibTest, HandlesPositiveInput) {
     int size = TestData::fib_ans.size();

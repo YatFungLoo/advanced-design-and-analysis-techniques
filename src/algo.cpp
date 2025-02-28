@@ -70,7 +70,7 @@ Algo::cutRodMemorizedAux(const int length, std::array<Rod, NUM_LENGTH> const &da
     return ret;
 }
 
-int Algo::cutRodBottomUp(const int length, std::array<Rod, NUM_LENGTH> const &data) {
+[[maybe_unused]] int Algo::cutRodBottomUp(const int length, std::array<Rod, NUM_LENGTH> const &data) {
     std::array<int, NUM_LENGTH> ret; // Storing results.
     for (auto &i : ret) {
         i = 0;
@@ -84,4 +84,18 @@ int Algo::cutRodBottomUp(const int length, std::array<Rod, NUM_LENGTH> const &da
         ret[j] = price;
     }
     return ret[length];
+}
+
+[[maybe_unused]] std::vector<std::vector<int>> Algo::matrixChainProduct(const std::vector<std::vector<int>> A,
+                                                                        const std::vector<std::vector<int>> B,
+                                                                        const int q, const int p, const int r) {
+    std::vector<std::vector<int>> R{{0, 0}, {0, 0}}; // Return vector.
+    for (auto i = 0; i <= p; i++) {
+        for (auto j = 0; j <= r; j++) {
+            for (auto k = 0; k <= q; k++) {
+                R[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+    return R;
 }

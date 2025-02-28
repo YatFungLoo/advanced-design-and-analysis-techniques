@@ -12,7 +12,7 @@ Note and codes while studying the book Advanced Design And Analysis Techniques, 
       - [Top Down Recursive Approach (Naive Solution)](#top-down-recursive-approach-naive-solution)
       - [Dynamic Programming Approach (Top Down w/ *memorization*)](#dynamic-programming-approach-top-down-w-memorization)
       - [Dynamic Bottom Up Approach (Iterative)](#dynamic-bottom-up-approach-iterative)
-    - [Matrix-Chain Multiplication](#matrix-chain-multiplication)
+    - [Matrix-Chain Multiplication Problem](#matrix-chain-multiplication-problem)
   - [Greedy Algorithms](#greedy-algorithms)
   - [Amortized Analysis](#amortized-analysis)
   - [Graph related (Move to a new Repo)](#graph-related-move-to-a-new-repo)
@@ -35,6 +35,7 @@ Including Top down (recursion using call stack) and bottom up (iterative, using 
 
 ### Rod Cutting Problem
 
+
 Optimal substructure problem: optimal solution are composed of optimal sub-solution, basically meaning it can be solved recursively.
 
 The recursive structure for the problem can be decomposed of first piece to be the left-hand end, and right-hand end to be the maximum/optimal price of the total length.
@@ -56,6 +57,10 @@ The implementation here uses a an extra array size of maximum length of rod, whi
 #### Dynamic Bottom Up Approach (Iterative)
 
 Same approach but different execution to above Fibonacci bottom up method. Solve and save sub-problem results in `ascending` order (smallest first), and reuse results.
+
+### Matrix-Chain Multiplication Problem
+
+Given a sequence $(A_1, A_2, ... ,A_n)$ of $n$ matrices to be multiplied, where $A$ are not garentted, compute the product $A_1A_2 ... A_n$
 
 ## Greedy Algorithms
 

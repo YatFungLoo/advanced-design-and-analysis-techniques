@@ -35,3 +35,22 @@ TEST(fibBottomUpTest, HandlesPositiveInput) {
         EXPECT_EQ(Algo::fibonacciBottomUp(i), TestData::fib_ans[i]);
     }
 };
+
+TEST(matrixProductTest, HandlesPositiveInput) {
+
+    /*
+      1, 2,    1, 2,     7, 10,
+      3, 4, *  3, 4,  =  15,22,
+     */
+
+    const std::vector<std::vector<int>> A = {{1, 2}, {3, 4}};
+    const auto q = A.size() / 2;
+    const std::vector<std::vector<int>> B = {{1, 2}, {3, 4}};
+    const auto p = B.size() / 2;
+    const auto r = p; // Assuming p and q are square matrix.
+    std::vector<std::vector<int>> answer = {{7, 10}, {15, 22}};
+
+    for (int i = 0; i < 1; i++) {
+        EXPECT_EQ(Algo::matrixChainProduct(A, B, p, q, r), answer);
+    }
+};

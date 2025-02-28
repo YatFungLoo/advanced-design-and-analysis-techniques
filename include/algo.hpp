@@ -15,6 +15,9 @@ class Algo {
     [[maybe_unused]] static std::array<int, NUM_LENGTH>
     cutRodMemorizedAux(const int length, std::array<Rod, NUM_LENGTH> const &data, std::array<int, NUM_LENGTH> &ret);
     [[maybe_unused]] static int cutRodBottomUp(const int length, std::array<Rod, NUM_LENGTH> const &data);
+    [[maybe_unused]] static std::vector<std::vector<int>> matrixChainProduct(const std::vector<std::vector<int>> A,
+                                                                const std::vector<std::vector<int>> B, const int q,
+                                                                const int p, const int r);
 };
 
 #endif

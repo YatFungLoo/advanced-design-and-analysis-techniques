@@ -99,3 +99,5 @@ Algo::cutRodMemorizedAux(const int length, std::array<Rod, NUM_LENGTH> const &da
     }
     return R;
 }
+
+int Algo::minMatrixChain() { return 0; }

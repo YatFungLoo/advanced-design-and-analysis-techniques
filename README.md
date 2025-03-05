@@ -13,6 +13,7 @@ Note and codes while studying the book Advanced Design And Analysis Techniques, 
       - [Dynamic Programming Approach (Top Down w/ *memorization*)](#dynamic-programming-approach-top-down-w-memorization)
       - [Dynamic Bottom Up Approach (Iterative)](#dynamic-bottom-up-approach-iterative)
     - [Matrix-Chain Multiplication Problem](#matrix-chain-multiplication-problem)
+      - [The Actual Dynamic Programming Problem](#the-actual-dynamic-programming-problem)
   - [Greedy Algorithms](#greedy-algorithms)
   - [Amortized Analysis](#amortized-analysis)
   - [Graph related (Move to a new Repo)](#graph-related-move-to-a-new-repo)
@@ -60,7 +61,33 @@ Same approach but different execution to above Fibonacci bottom up method. Solve
 
 ### Matrix-Chain Multiplication Problem
 
-Given a sequence $(A_1, A_2, ... ,A_n)$ of $n$ matrices to be multiplied, where $A$ are not garentted, compute the product $A_1A_2 ... A_n$
+Given a sequence $(A_1, A_2, ... ,A_n)$ of $n$ matrices to be multiplied, where $A$ are not guaranteed, compute the product $A_1A_2 ... A_n$
+
+The amount of computation of this problem is dominated by the number of scalar multiplications, where $Ans_{ij} = Ans_{ij} + A_{ij} * B_{ij}$.
+
+For $A_1 * A_2 * A_3$ where each dimension is $p * q$, $q * r$ and $r * s$ respectively. If we group the matrix in the order of $((A_1 * A_2) * A_3)$ The number of scalar multiplications to calculated $A_1 * A_2$ will be $p * q * r$ to generate the $p * r$ matrix, the resulting matrix will then multiply $A_3$ where there will be $p * r * s$ number of multiplications. The total multiplication will be:
+
+```math
+p * q * r + p * r * s
+\tag{1}
+```
+
+If we use another configuration $(A_1 * (A_2 * A_3))$, the total number of scalar multiplication will be different, totalling at:
+
+```math
+p * q * s + q * r * s
+\tag{2}
+```
+
+As an example, substituting $p, q, r, s$ as $10, 100, 20, 5$. We get $21000$ vs $15000$ scalar multiplication with $(1)$ and $(2)$ respectively.
+
+#### The Actual Dynamic Programming Problem
+
+The actual dynamic problem to solve is to find the optimal parentheses order that gives the minimum scalar multiplications.
+
+The optimal parenthesization for $A_{ij}$ must split between $A_k$ and $A_{k+1}$ where $k$ is between $i$ and $j$, the optimal solution will be the scalar multiplication of the two matrices.
+
+Let $m[i,j]$ be the minimum scalar multiplications needed to computer $A_{ij}$. if $i = j$ problem is trivial.
 
 ## Greedy Algorithms
 
@@ -96,7 +123,7 @@ or
 ```bash
 cd build && ninja clean && ninja
 ```
-
+  
 and executable will exist in the `build/` directory.
 
 to generate compile_commands.json file for clangd LSP, use

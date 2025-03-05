@@ -18,6 +18,7 @@ class Algo {
     [[maybe_unused]] static std::vector<std::vector<int>> matrixChainProduct(const std::vector<std::vector<int>> A,
                                                                 const std::vector<std::vector<int>> B, const int q,
                                                                 const int p, const int r);
+    [[maybe_unused]] static int minMatrixChain();
 };
 
 #endif
